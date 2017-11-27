@@ -201,6 +201,8 @@ public class frmPrincipal extends javax.swing.JFrame {
         gst = new GstAutoEcole();
         ArrayList<Eleve> tousLesEleves = new ArrayList<Eleve>();
         ArrayList<Test> tousLesTests = new ArrayList<Test>();
+        ArrayList<Test> getSesTests = new ArrayList<Test>();
+        
         Vector v = null;
         
         // Les objets ELEVES
@@ -269,10 +271,28 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void btnInscriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscriptionActionPerformed
         // TODO add your handling code here:
-
+        boolean trouveEleve = false;
+        boolean trouveTest = false;
         // A vous de jouer
-        
-        
+        if(lstEleves.getSelectedIndex()==-1){
+            JOptionPane.showMessageDialog(this, "Sélectionner un eleve");
+            
+        }
+        else{
+            if(lstTests.getSelectedIndex()==-1){
+               JOptionPane.showMessageDialog(this, "Sélectionner un test");
+            }
+//            }
+//        else
+//            {
+            
+                        
+//                Eleve e = new Eleve(
+//                    gst.getTousLesTests().get(lstTests.getSelectedIndex()).getNomTest(),
+//                    gst.getTousLesEleves().get(lstEleves.getSelectedIndex()).getSesTests()
+//                    );
+            
+            }
         
         
         
