@@ -233,12 +233,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         gst.AjouterUnTest(test4);
         gst.AjouterUnTest(test5);
         
-//         for (Eleve e : gst.getTousLesEleves())
-//        {
-//            v = new Vector();
-//            v.add(e.getNomEleve());   
-//            dlmEleves.addElement(v);
-//        }
+
         
         // Remplir la liste de tous les élèves
         for(Eleve eleve : gst.getTousLesEleves()){
@@ -248,15 +243,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         // prend comme modèle le dlmEleves
         lstEleves.setModel(dlmEleves);
         
-        
-//          for (Test t : gst.getTousLesTests())
-//        {
-//            v = new Vector();
-//            v.add(t.getIdTest());  
-//            v.add(t.getNomTest()); 
-//
-//            dlmTests.addElement(v);
-//        }
+
 
         // Remplir la liste de tous les tests
          for(Test test : gst.getTousLesTests()){
@@ -271,6 +258,7 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void btnInscriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscriptionActionPerformed
         // TODO add your handling code here:
+        Vector v = null;
         boolean trouveEleve = false;
         boolean trouveTest = false;
         // A vous de jouer
@@ -282,20 +270,22 @@ public class frmPrincipal extends javax.swing.JFrame {
             if(lstTests.getSelectedIndex()==-1){
                JOptionPane.showMessageDialog(this, "Sélectionner un test");
             }
-//            }
-//        else
-//            {
+        
+        
             
+//        for(Test t : gst.getTousLesTests())
+//        {
+//            v = new Vector();
+//            v.add(t.getNomTest());
+//            v.add(t.getNbFautes());
+//            v.add(t.getTermine());
+//            dtmTests.addRow(v);
+//        }
                         
-//                Eleve e = new Eleve(
-//                    gst.getTousLesTests().get(lstTests.getSelectedIndex()).getNomTest(),
-//                    gst.getTousLesEleves().get(lstEleves.getSelectedIndex()).getSesTests()
-//                    );
+                
             
             }
-        
-        
-        
+ 
     }//GEN-LAST:event_btnInscriptionActionPerformed
 
     private void btnModificationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificationActionPerformed
