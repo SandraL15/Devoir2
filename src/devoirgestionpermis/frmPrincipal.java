@@ -264,6 +264,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         Vector v = null;
         boolean trouveEleve = false;
         boolean trouveTest = false;
+        boolean estVide = false;
         // A vous de jouer
         if(lstEleves.getSelectedIndex()==-1){
             JOptionPane.showMessageDialog(this, "Sélectionner un eleve");
@@ -273,27 +274,79 @@ public class frmPrincipal extends javax.swing.JFrame {
             if(lstTests.getSelectedIndex()==-1){
                JOptionPane.showMessageDialog(this, "Sélectionner un test");
             }
-        
-        
+        if(gst.getLesElevesInscrits().isEmpty()){
+            Eleve e = gst.GetUnEleve(lstTests.getSelectedIndex());
+            Test t = gst.GetUnTest(lstTests.getSelectedIndex());
             
-//        for(Test t : gst.getTousLesTests())
-//        {
-//            v = new Vector();
-//            v.add(t.getNomTest());
-//            v.add(t.getNbFautes());
-//            v.add(t.getTermine());
-//            dtmTests.addRow(v);
-//        }
-                        
+            e.getSesTests().add(t);
+            gst.getLesElevesInscrits().add(e);
+            
+            trouveEleve=true;
+            estVide=true;
+        }
+        else{
+            int i=0;
+            for(Eleve e :gst.getLesElevesInscrits()){
                 
-            
+                if(e.getNomEleve().compareTo(gst.GetUnEleve(lstEleves.getSelectedIndex()).toString())==0){
+                    trouveEleve=true;
+                    
+                    for(Test t : gst.getTousLesTests()){
+                        
+                        if(t.getNomTest().compareTo(gst.GetUnTest(lstTests.getSelectedIndex()).toString())==0){
+                            trouveTest = true;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        if(trouveTest){
+            JOptionPane.showMessageDialog(this, "Déjà inscrit à ce test");
+        }
+        else{
+            if(!estVide){
+                Eleve e = gst.GetUnEleve(lstTests.getSelectedIndex());
+                Test t = gst.GetUnTest(lstTests.getSelectedIndex());
+                
+                e.getSesTests().add(t);
+                gst.getLesElevesInscrits().add(e);
+                
+            }
+            else{
+                if(estVide){
+                   Test t = gst.GetUnTest(lstTests.getSelectedIndex());
+                }
+            }
+        }
+        cboElevesInscrits.removeAllItems();
+        for(Eleve eleve: gst.getLesElevesInscrits()){
+            cboElevesInscrits.addItem(eleve.getNomEleve());
+        }
+     
             }
  
     }//GEN-LAST:event_btnInscriptionActionPerformed
 
     private void btnModificationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificationActionPerformed
         // TODO add your handling code here:
-        
+        Vector v = null;
+        if(evt.getStateChange()==ItemEvent.SELECTED){
+            while(dtmTests.getRowCount()!=0){
+                dtmTests.removeRow(0);
+                
+            }
+            cboElevesInscrits.getSelectedIndex();
+            Eleve e = gst.GetUnEleveInscrit(e);
+            for(Test t : e.getSesTests()){
+                v = new Vector();
+                v.add(t.getNomTest());
+                v.add(t.getNbFautes());
+                v.add(t.getTermine());
+                dtmTests.addRow(v);
+                
+            }
+        }
         // A vous de jouer
         
         
